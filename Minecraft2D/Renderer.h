@@ -13,7 +13,10 @@ private:
 public:
 	
 	Renderer(GameData*);
+	void renderInGame();
+	void pollEventsInGame();
+	void drawSky();
+	void drawInGame();
 	void startRendering();
-
 };
 

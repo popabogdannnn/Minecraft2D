@@ -12,6 +12,8 @@ Game::Game()
 Game::~Game()
 {
 	this->GameInstance = nullptr;
+	delete this->gameData;
+	delete this->renderer;
 }
 
 Game* Game::getInstance()
@@ -25,5 +27,11 @@ Game* Game::getInstance()
 void Game::run()
 {
 	renderer = new Renderer(this->gameData);
+	this->gameData->gameState = IN_GAME_STATE;
 	std::thread renderThread(&Renderer::startRendering, this->renderer);
+
+	while (this->gameData->gameState != GAME_CLOSED_STATE) {
+
+	}
+	renderThread.join();
 }
